@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="./Style Sheets/stylesLEADERBOARD.css">
+</head>
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+<script src="./js/audiohome.js" defer></script>
+
+
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+
+    <h1>Pac-Party Leaderboard</h1>
+
+    <!-- Statistics Box -->
+    <div class="statistics-box">
+        <h2>Your Stats</h2>
+        <p>High Score: <span id="high-score">Loading...</span></p>
+        <p>Rank: <span id="player-rank">Loading...</span></p>
+    </div>
+
+    <!-- Placeholder for dynamic leaderboard data -->
+    <div id="leaderboard-placeholder">
+        <p>Loading leaderboard...</p>
+    </div>
+
+    <!-- Home Button -->
+    <nav>
+        <button onclick="location.href='homepage.html'" class="home-button">HOME</button>
+    </nav>
+
+    <!-- Achievements Box (bottom left corner) -->
+    <div class="achievement-box">
+        <h3>Your Achievements</h3>
+        <ul id="achievement-list">
+            <li>Loading achievements...</li>
+        </ul>
+    </div>
+
+    <script>
+        // Fetch leaderboard data
+        fetch('leaderboard.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('leaderboard-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('leaderboard-placeholder').innerHTML = '<p>Failed to load leaderboard data</p>';
+            });
+
+        // Fetch high score and display it in Statistics Box
+        function fetchHighScore() {
+            fetch('gamePage.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById("high-score").textContent = "Error: " + data.error;
+                    } else {
+                        document.getElementById("high-score").textContent = data.high_score;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("high-score").textContent = "Error fetching high score";
+                });
+        }
+
+        // Fetch player's rank and display it in Statistics Box
+        function fetchPlayerRank() {
+            fetch('getPlayerRank.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById("player-rank").textContent = "Error: " + data.error;
+                    } else {
+                        document.getElementById("player-rank").textContent = data.rank;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("player-rank").textContent = "Error fetching rank";
+                });
+        }
+
+        // Fetch the user's achievements
+        function fetchAchievements() {
+    fetch('fetchAchievements.php')
+        .then(response => response.json())
+        .then(achievements => {
+            console.log("Achievements received:", achievements);
+            const achievementList = document.getElementById('achievement-list');
+            achievementList.innerHTML = '';
+
+            if (!Array.isArray(achievements) || achievements.length === 0) {
+                achievementList.innerHTML = '<li>No achievements yet</li>';
+                return;
+            }
+
+            achievements.forEach(achievement => {
+                const li = document.createElement('li');
+                li.textContent = achievement.name;
+
+                const criteria = document.createElement('span');
+                criteria.classList.add('criteria');
+                criteria.textContent = `Criteria: ${achievement.description}`;
+
+                if (achievement.unlocked) {
+                    li.classList.add('unlocked');
+                } else {
+                    li.classList.add('locked');
+                }
+
+                li.appendChild(criteria); // Append criteria below the name
+                achievementList.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching achievements:", error);
+            document.getElementById('achievement-list').innerHTML = '<li>Error loading achievements</li>';
+        });
+}
+
+
+        // Fetch high score, rank, and achievements when the page loads
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchHighScore();
+            fetchPlayerRank();
+            fetchAchievements();
+        });
+    </script>
+
+</body>
+</html>

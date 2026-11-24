@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Over</title>
+    <link rel="stylesheet" href="./Style Sheets/styleENDGAME.css">
+</head>
+<body>
+    <!-- Diagonal Corner Decorations -->
+    <div class="corner-decoration top-left"></div>
+    <div class="corner-decoration bottom-right"></div>
+
+    <div class="container">
+
+        <!-- Page Content -->
+        <h1>GAME OVER</h1>
+        
+        <div class="score-box">
+            <h2>Your Score:</h2>
+            <p id="scoreDisplay">Loading...</p>
+        </div>
+
+        <div class="score-box">
+            <h2>High Score:</h2>
+            <p id="high-score">Loading...</p> 
+        </div>
+
+        <!-- Navigation Buttons -->
+        <nav>
+            <button onclick="location.href='homepage.html'" class="home-button">HOME</button>
+            <button onclick="location.href='leaderboard.html'" class="leaderboard-button">LEADERBOARD</button>
+        </nav>
+    </div>
+
+    <script src="gamePageCode.js"></script>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the final score from localStorage
+    const finalScore = localStorage.getItem('finalScore');
+    document.getElementById("scoreDisplay").textContent = finalScore ? finalScore : "0";
+
+    fetchHighScore(finalScore);
+});
+
+function fetchHighScore(finalScore) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'gamePage.php', true); // Request the high score from the server
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) { // Check if request is complete and successful
+            const response = JSON.parse(xhr.responseText);
+
+            if (response.error) {
+                document.getElementById("high-score").textContent = "Error: " + response.error;
+            } else {
+                const highScore = parseInt(response.high_score);
+                document.getElementById("high-score").textContent = highScore;
+
+                // If the new score is higher, update immediately
+                if (parseInt(finalScore) > highScore) {
+                    updateHighScore(finalScore);
+                }
+            }
+        }
+    };
+    xhr.send(); // Send the GET request
+}
+
+
+function updateHighScore(newScore) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'updateHighScore.php', true); // Send the new high score to the server via POST
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                document.getElementById("high-score").textContent = newScore; // Update high score immediately on the page
+            }
+        }
+    };
+
+    xhr.send('score=' + newScore); // Send the new score to the server for updating
+}
+
+
+    </script>
+
+</body>
+</html>

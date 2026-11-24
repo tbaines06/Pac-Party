@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GAME</title>
+    <link href="./Style Sheets/stylesGAME.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="overlay" id = "startScreen" >
+      <div class="start-screen">
+        <h1>ARE YOU READY FOR A PARTY?</h1>
+        <button id="startButton" class="pixelated"
+        
+        >Play</button>
+      </div>
+    </div>
+
+    <h1></h1>
+    <img src="./img/Logo.png" width="400" height="250">
+    <p>
+      <span1>Score: </span1> 
+      <span2 id="scoreEl"> 0 </span2>
+      <span3> Lives: </span3>
+      <span4 id ="livesEl"> 3 </span4>
+      <span5> Level: </span5>
+      <span6 id="levelEl"> 1 </span6>
+    </p>
+
+    <canvas></canvas>
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" 
+    integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" 
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer"></script>
+    <script src="./js/Audio.js"></script>
+    <script src="./js/Utilities.js"></script>
+    <script src="./js/Classes/Boundary.js"></script>
+    <script src="./js/Classes/Ghost.js"></script>
+    <script src="./js/Classes/Pellet.js"></script>
+    <script src="./js/Classes/Byte.js"></script>
+    <script src="./js/Classes/PowerUp.js"></script>
+    <script src="./js/Classes/Item.js"></script>
+    <script src="./js/EventListeners.js"></script>
+    <script src="./js/MapLayout.js"></script>
+    <script src="gamePageCode.js"></script>
+
+   
+  </body>
+</html>

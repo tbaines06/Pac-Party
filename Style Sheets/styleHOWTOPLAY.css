@@ -1,0 +1,134 @@
+/* Base Styles */
+body, html { 
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Fully black background */
+    color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto; /* Enable scrolling for smaller screens */
+    position: relative;
+}
+
+/* Diagonal Corner Decorations */
+.corner-decoration {
+    position: absolute;
+    z-index: 0;
+    background: linear-gradient(135deg, #3FA7D6, #EC91D8, #FF073A);
+}
+
+.corner-decoration.top-left {
+    top: 0;
+    left: 0;
+    width: 20vw; /* Adjusted width */
+    height: 20vh; /* Adjusted height */
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.corner-decoration.bottom-right {
+    position: fixed; /* Ensures it always sticks to the bottom corner */
+    bottom: 0;
+    right: 0;
+    width: 21vw; /* Slightly increase width to avoid gaps */
+    height: 21vh; /* Slightly increase height to avoid gaps */
+    background: linear-gradient(135deg, #3FA7D6, #EC91D8, #FF073A);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    z-index: 0;
+}
+
+
+/* Container */
+.container {
+    text-align: center;
+    position: relative; /* Keeps content above decorations */
+    z-index: 1;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    
+}
+
+/* Header */
+h1 {
+    font-size: 28px;
+    color: #EC91D8;
+    margin: 20px 0;
+}
+
+/* Content Section */
+#how-to-play-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 20px auto;
+    text-align: left; /* Align text for better readability */
+}
+
+/* Demo Image */
+.demo-image {
+    max-width: 100%; /* Ensures image is responsive */
+    height: auto;
+    margin: 20px 0;
+    border: 2px solid #FFFFFF; /* Optional border for emphasis */
+    border-radius: 5px;
+}
+
+/* Navigation Buttons */
+nav {
+    margin-top: 30px;
+}
+
+button {
+    background-color: #EC91D8;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+}
+
+button:hover {
+    background-color: #FF073A; /* Hover effect */
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+button:active {
+    background-color: #3FA7D6; /* Active state color */
+}
+
+/* Leaderboard Button */
+.leaderboard-button {
+    background-color: #3FA7D6; /* Initial blue color */
+}
+
+.leaderboard-button:hover {
+    background-color: #1D73B8; /* Different blue on hover */
+}
+
+/* Subtle Design Features */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3FA7D6, #EC91D8, #FF073A);
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+nav::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 2px;
+    margin: 20px auto;
+    background: linear-gradient(to right, #3FA7D6, #FFFFFF, #EC91D8);
+    border-radius: 1px;
+}

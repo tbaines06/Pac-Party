@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PACPARTY</title>
+  <link rel="stylesheet" href="./Style Sheets/styleSIGNUP.css">
+</head>
+<body>
+  <div class="corner-decoration top-left"></div>
+  <div class="corner-decoration bottom-right"></div>
+  <header><img src="./img/Logo.png" alt="Game Logo" class="logo"></header>
+  <div class="content">
+    <form name="Sign Up" action="loginprocess.php" method="POST">
+        <label for="username">Username:</label> 
+        <input type="text" id="username" name="username" required="required"><br>
+
+        <label for="password">Password:</label> 
+        <input type="password" id="password" name="password" title="Password must contain at least one number, one capital alphabet, one symbol, and be at least 8 characters long" required="required"><br>
+
+        
+
+        <input type="submit" value="Login">
+    </form>
+
+    <div class="login-container">
+        <p class="login-text">Not have an account yet?</p>
+        <button onclick="location.href='signup.html'"> SIGN UP</button>
+    </div>
+</div>
+
+  </div>
+</body>
+</html>

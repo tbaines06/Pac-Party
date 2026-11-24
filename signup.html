@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - PACPARTY</title>
+  <link rel="stylesheet" href="./Style Sheets/styleSIGNUP.css">
+</head>
+<body>
+  <div class="corner-decoration top-left"></div>
+  <div class="corner-decoration bottom-right"></div>
+  <header><img src="./img/Logo.png" alt="Game Logo" class="logo"></header>
+  <div class="content">
+    <form name="Sign Up" action="signupprocess.php" method="POST">
+        <label for="username">Username:</label> 
+        <input type="text" id="username" name="username" required="required">
+        <span> Lowercase and Numbers </span><br>
+
+        <label for="password">Password:</label> 
+        <input type="password" id="password" name="password" required="required">
+        <span> Uppercase, Numbers, Special Character and 8 or more characters</span><br>
+
+        <label for="password_confirmation">Confirm Password:</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" required="required"><br>
+
+        <label for="firstname">Firstname:</label>  
+        <input type="text" id="firstname" name="firstname" required="required"><br>
+
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <div class="login-container">
+        <p class="login-text">Already have an account?</p>
+        <button onclick="location.href='login.html'">LOG IN</button>
+    </div>
+</div>
+
+
+
+
+  </div>
+</body>
+</html>

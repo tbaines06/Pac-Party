@@ -1,0 +1,137 @@
+/* Base Styles */
+body, html { 
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Fully black background */
+    color: #FFFFFF;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Prevents scrolling */
+    position: relative;
+}
+
+/* Diagonal Corner Decorations */
+.corner-decoration {
+    position: absolute;
+    width: 20vw; /* Slightly smaller */
+    height: 20vh; /* Slightly smaller */
+    background: linear-gradient(135deg, #3FA7D6, #EC91D8, #FF073A);
+    z-index: 0;
+}
+
+/* Top-left corner */
+.corner-decoration.top-left {
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Bottom-right corner */
+.corner-decoration.bottom-right {
+    bottom: 0;
+    right: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Container */
+.container {
+    text-align: center;
+    position: relative; /* Keeps content above decorations */
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+h1 {
+    font-size: 48px;
+    color: #FF073A;
+    margin: 30px 0;
+    text-transform: uppercase; /* Makes the "Game Over" text uppercase */
+}
+
+/* Score Box */
+.score-box {
+    background-color: #FFFFFF; /* White background for the score boxes */
+    color: #000000; /* Black text for better contrast */
+    margin: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px; /* Fixed width for the score boxes */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Slight shadow effect */
+}
+
+/* Highlighting the Score Text */
+#scoreDisplay, #high-score {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FF073A; /* Bright accent color for the scores */
+}
+
+/* Navigation Buttons */
+nav {
+    margin-top: 50px;
+}
+
+button {
+    background-color: #EC91D8;
+    color: #FFFFFF;
+    border: none;
+    padding: 20px 40px;
+    margin: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+}
+
+button:hover {
+    background-color: #FF073A; /* Hover effect */
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+button:active {
+    background-color: #3FA7D6; /* Active state color */
+}
+
+/* Leaderboard Button */
+.leaderboard-button {
+    background-color: #3FA7D6; /* Initial blue color */
+}
+
+.leaderboard-button:hover {
+    background-color: #1D73B8; /* Different blue on hover */
+    transform: scale(1.1); /* Hover effect matches others */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtle Design Features */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #3FA7D6, #EC91D8, #FF073A);
+    opacity: 0.03; /* Subtle background gradient */
+    pointer-events: none; /* Ensures no interaction with this layer */
+}
+
+nav::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 2px;
+    margin: 30px auto;
+    background: linear-gradient(to right, #3FA7D6, #FFFFFF, #EC91D8);
+    border-radius: 1px; /* Subtle decorative line below buttons */
+}

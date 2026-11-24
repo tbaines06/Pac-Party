@@ -1,0 +1,155 @@
+/* Base Styles */
+body, html { 
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Fully black background */
+    color: #FFFFFF;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Prevents scrolling */
+    position: relative;
+}
+
+/* Diagonal Corner Decorations */
+.corner-decoration {
+    position: absolute;
+    width: 20vw; /* Slightly smaller */
+    height: 20vh; /* Slightly smaller */
+    background: linear-gradient(135deg, #3FA7D6, #EC91D8, #FF073A);
+    z-index: 0;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Top-left corner */
+.corner-decoration.top-left {
+    top: 0;
+    left: 0;
+}
+
+/* Bottom-right corner */
+.corner-decoration.bottom-right {
+    bottom: 0;
+    right: 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the logo */
+    max-width: 400px; /* Control the size */
+    z-index: 1; /* Ensures it appears above other elements */
+}
+
+/* Content Wrapper */
+.content {
+    position: absolute;
+    top: 35%; /* Moved up slightly */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+
+/* Center Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    width: 250px;
+    margin: auto;
+}
+
+form p {
+    font-size: 22px; /* Adjusted text size to match homepage */
+    margin: 10px 0;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 12px; /* Slightly larger padding */
+    margin: 10px 0;
+    border: 3px solid #3FA7D6; /* Thicker outline */
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #FFFFFF;
+    font-size: 18px; /* Increased font size */
+}
+
+form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 3px solid #3FA7D6;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+
+form input[type="submit"] {
+    background-color: #EC91D8;
+    color: #FFFFFF;
+    border: none;
+    padding: 20px 40px;
+    margin-top: 15px;
+    font-size: 20px; /* Adjusted font size */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+}
+
+form input[type="submit"]:hover {
+    background-color: #FF073A; /* Hover effect */
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+/* Login Container */
+.login-container {
+    position: absolute; /* Place container on the left-hand side */
+    left: 150px;
+    bottom: 70%; /* Adjust this to position it vertically */
+    text-align: center;
+    z-index: 0; /* Ensure it has a z-index of 0 */
+}
+
+/* Login Text */
+.login-text {
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+/* Login Button */
+button {
+    background-color: #3FA7D6;
+    color: #FFFFFF;
+    border: none;
+    padding: 20px 40px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #0947c2; /* Hover effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+button:active {
+    background-color: #3FA7D6; /* Active state color */
+}
+
+
+
+
